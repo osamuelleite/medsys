@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prontuário do Paciente</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/dashboard_medico.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/dashboard_medico" style="float: right; text-decoration: none;">Voltar ao Dashboard</a>
+        <h1>Prontuário do Paciente</h1>
+        
+        <hr style="clear: both;">
+        
+        % if paciente:
+        <div class="patient-info">
+            <p><strong>Nome:</strong> {{paciente['nome']}} {{paciente['sobrenome']}}</p>
+            <p><strong>CPF:</strong> {{paciente['cpf']}}</p>
+            <p><strong>Email:</strong> {{paciente['email']}}</p>
+        </div>
+        % else:
+        <p>Informações do paciente não encontradas.</p>
+        % end
+
+        <div class="create-section">
+            <form action="/medico/adicionar_prescricao" method="post">
+                <h3>Adicionar Nova Prescrição</h3>
+                <input type="hidden" name="cpf_paciente" value="{{paciente['cpf']}}">
+                <input type="hidden" name="crm_medico" value="{{crm_medico_logado}}">
+                <div class="form-group">
+                    <label>Medicamento:</label>
+                    <input type="text" name="medicamento" required>
+                </div>
+                <div class="form-group">
+                    <label>Instruções (Dosagem, frequência, etc.):</label>
+                    <textarea name="instrucoes" rows="3" style="width: 95%; padding: 0.8em; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                </div>
+                <button type="submit">Adicionar Prescrição</button>
+            </form>
+        </div>
+
+        <hr>
+        <div class="create-section">
+            <form action="/medico/agendar_consulta" method="post">
+                <h3>Agendar Nova Consulta</h3>
+                <input type="hidden" name="cpf_paciente" value="{{paciente['cpf']}}">
+                <input type="hidden" name="crm_medico" value="{{crm_medico_logado}}">
+
+                <div class="form-group">
+                    <label>Data da Consulta:</label>
+                    <input type="date" name="data_consulta" required style="width: 95%; padding: 0.8em; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div class="form-group">
+                    <label>Hora da Consulta:</label>
+                    <input type="time" name="hora_consulta" required style="width: 95%; padding: 0.8em; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div class="form-group">
+                    <label>Notas (opcional):</label>
+                    <textarea name="notas" rows="3" style="width: 95%; padding: 0.8em; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                </div>
+                <button type="submit">Agendar Consulta</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <h2>Consultas Agendadas</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Notas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    % for consulta in consultas:
+                    <tr>
+                        <td>{{consulta.get('data_consulta')}}</td>
+                        <td>{{consulta.get('hora_consulta')}}</td>
+                        <td>{{consulta.get('notas', 'N/A')}}</td>
+                    </tr>
+                    % end
+                    % if not consultas:
+                    <tr>
+                        <td colspan="3">Nenhuma consulta agendada para este paciente.</td>
+                    </tr>
+                    % end
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <h2>Prescrições</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Medicamento</th>
+                        <th>Instruções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    % for presc in prescricoes:
+                    <tr>
+                        <td>{{presc.get('data', 'N/A')}}</td>
+                        <td>{{presc.get('medicamento')}}</td>
+                        <td>{{presc.get('instrucoes')}}</td>
+                    </tr>
+                    % end
+                    % if not prescricoes:
+                    <tr>
+                        <td colspan="3">Nenhuma prescrição encontrada.</td>
+                    </tr>
+                    % end
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/static/js/prontuario_paciente.js"></script>
+</body>
+</html>

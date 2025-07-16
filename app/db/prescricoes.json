@@ -1,0 +1,23 @@
+[
+    {
+        "cpf_paciente": "03216549870",
+        "crm_medico": "0001",
+        "medicamento": "Dipirona",
+        "instrucoes": "até 2x ao dia, quando sentir dor",
+        "data": "01/07/2025"
+    },
+    {
+        "cpf_paciente": "03216549870",
+        "crm_medico": "0001",
+        "medicamento": "Paralelepípedo",
+        "instrucoes": "sublimação",
+        "data": "01/07/2025"
+    },
+    {
+        "cpf_paciente": "563249267501",
+        "crm_medico": "0001",
+        "medicamento": "pipoca doce",
+        "instrucoes": "todo dia",
+        "data": "01/07/2025"
+    }
+]

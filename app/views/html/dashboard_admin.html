@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Administrador</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/dashboard_admin.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/logout" style="float: right; text-decoration: none;">Sair</a>
+        <h1>Dashboard do Administrador</h1>
+        <p>Gerenciamento de utilizadores do sistema MedSYS.</p>
+        
+        <hr>
+
+        <div class="create-section">
+            <button class="toggle-btn" onclick="toggleForm('form-medico')">Adicionar Novo Médico +</button>
+            <form id="form-medico" action="/admin/criar_usuario" method="post" class="hidden-form">
+                <h3>Novo Médico</h3>
+                <input type="hidden" name="tipo_usuario" value="medico">
+                <div class="form-group"><label>Nome:</label><input type="text" name="nome" required></div>
+                <div class="form-group"><label>Sobrenome:</label><input type="text" name="sobrenome" required></div>
+                <div class="form-group"><label>Email:</label><input type="email" name="email" required></div>
+                <div class="form-group"><label>Senha:</label><input type="password" name="senha" required></div>
+                <div class="form-group"><label>CRM:</label><input type="text" name="crm" required></div>
+                <div class="form-group"><label>Especialidade:</label><input type="text" name="especialidade" required></div>
+                <button type="submit">Criar Médico</button>
+            </form>
+
+            <button class="toggle-btn" onclick="toggleForm('form-paciente')">Adicionar Novo Paciente +</button>
+            <form id="form-paciente" action="/admin/criar_usuario" method="post" class="hidden-form">
+                <h3>Novo Paciente</h3>
+                <input type="hidden" name="tipo_usuario" value="paciente">
+                <div class="form-group"><label>Nome:</label><input type="text" name="nome" required></div>
+                <div class="form-group"><label>Sobrenome:</label><input type="text" name="sobrenome" required></div>
+                <div class="form-group"><label>Email:</label><input type="email" name="email" required></div>
+                <div class="form-group"><label>Senha:</label><input type="password" name="senha" required></div>
+                <div class="form-group"><label>CPF:</label><input type="text" name="cpf" required></div>
+                <button type="submit">Criar Paciente</button>
+            </form>
+        </div>
+        
+        <hr>
+
+        <h2>Médicos Cadastrados</h2>
+        <div class = "table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Email</th>
+                    <th>CRM</th>
+                    <th>Especialidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                % for medico in medicos:
+                <tr>
+                    <td>{{medico['nome']}}</td>
+                    <td>{{medico['sobrenome']}}</td>
+                    <td>{{medico['email']}}</td>
+                    <td>{{medico['crm']}}</td>
+                    <td>{{medico['especialidade']}}</td>
+                    <td class="actions">
+                        <a href="/admin/editar_medico/{{medico['crm']}}" class="edit-btn">Editar</a>
+                        <button class="delete-btn" onclick="confirmarDelete('medico', '{{medico['crm']}}')">Apagar</button>
+                    </td>
+                </tr>
+                % end
+                % if not medicos:
+                <tr>
+                    <td colspan="6">Nenhum médico cadastrado.</td>
+                </tr>
+                % end
+            </tbody>
+        </table>
+        </div>
+        <hr style="margin: 2em 0;">
+
+        <h2>Pacientes Cadastrados</h2>
+        <div class = "table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                % for paciente in pacientes:
+                <tr>
+                    <td>{{paciente['nome']}}</td>
+                    <td>{{paciente['sobrenome']}}</td>
+                    <td>{{paciente['email']}}</td>
+                    <td>{{paciente['cpf']}}</td>
+                    <td class="actions">
+                        <a href="/admin/editar_paciente/{{paciente['cpf']}}" class="edit-btn">Editar</a>
+                        <button class="delete-btn" onclick="confirmarDelete('paciente', '{{paciente['cpf']}}')">Apagar</button>
+                    </td>
+                </tr>
+                % end
+                % if not pacientes:
+                <tr>
+                    <td colspan="5">Nenhum paciente cadastrado.</td>
+                </tr>
+                % end
+            </tbody>
+        </table>
+        </div>
+
+    <script src="/static/js/dashboard_admin.js"></script>
+</body>
+</html>

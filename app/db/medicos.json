@@ -1,0 +1,26 @@
+[
+    {
+        "nome": "Felipe",
+        "sobrenome": "Moreira",
+        "email": "felipe.moreira@gmail.com",
+        "senha": "123456",
+        "crm": "0001",
+        "especialidade": "Cardiologista"
+    },
+    {
+        "nome": "Henrique",
+        "sobrenome": "almeida",
+        "email": "henrique.almeida@gmail.com",
+        "senha": "123456",
+        "crm": "0002",
+        "especialidade": "Pediatra"
+    },
+    {
+        "nome": "Marcelo",
+        "sobrenome": "Freitas",
+        "email": "marcelo.freitas@gmail.com",
+        "senha": "123456",
+        "crm": "0003",
+        "especialidade": "otorrino"
+    }
+]

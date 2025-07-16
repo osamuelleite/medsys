@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat - MedSYS</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/chat.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Chat com {{nome_destinatario}}</h1>
+        <a href="/dashboard_{{tipo_usuario}}">Voltar ao Dashboard</a>
+        <hr>
+
+        <div id="historico-mensagens" class="chat-window">
+            % for msg in historico_mensagens:
+                % if msg['remetente'] == id_remetente:
+                    <div class="mensagem-enviada">
+                        <p>{{msg['texto']}}</p>
+                    </div>
+                % else:
+                    <div class="mensagem-recebida">
+                        <p>{{msg['texto']}}</p>
+                    </div>
+                % end
+            % end
+        </div>
+
+        <form id="form-chat" class="chat-form">
+            <input type="text" id="input-mensagem" placeholder="Escreva a sua mensagem..." autocomplete="off">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        const NOME_DA_SALA = "{{nome_da_sala}}";
+        const ID_REMETENTE = "{{id_remetente}}";
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/static/js/chat.js"></script>
+</body>
+</html>

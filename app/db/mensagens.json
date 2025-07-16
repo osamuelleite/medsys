@@ -1,0 +1,182 @@
+[
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "Bom dia Ana Vitória, eu sou o seu Doutor",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "Bom dia Doutor",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "eu estou me sentindo bem",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "Muito bom ouvir isso. Vamos precisar agendar um retono para a próxima semana. Apenas para fazer uma checagem final",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "tudo bem doutor",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "Lembre-se de tomar a medicação pelo menos 3 horas antes de vir",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "certo, tem algo a mais que preciso fazer?",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "também posso levar um acompanhante, certo?",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "No momento não temos novas orientações. Fique à vontade para via acompanhada",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "Olá",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "bom dia",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "testando mais uma vez. o contador de mensagens ão lidas não está funcioandno",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "asdasd",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "asdf",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "a",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "af",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "kljh",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "kljaskld",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "asdasdaskada",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "asdasdasdujhad",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "asdasdasda",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "asdasd",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "asdasdjkhbnjk",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "bom dia Ana",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "como você está?",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "0001",
+        "texto": "teste",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "oi Doutor",
+        "lido": true
+    },
+    {
+        "sala": "0001-03216549870",
+        "remetente": "03216549870",
+        "texto": "estou me sentindo melhor",
+        "lido": true
+    },
+    {
+        "sala": "0001-78945612301",
+        "remetente": "0001",
+        "texto": "Bom dia paulo. Precisamos marcar um retorno",
+        "lido": true
+    },
+    {
+        "sala": "0001-78945612301",
+        "remetente": "78945612301",
+        "texto": "Olá doutor",
+        "lido": false
+    }
+]

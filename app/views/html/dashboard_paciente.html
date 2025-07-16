@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Dashboard - MedSYS</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/dashboard_medico.css">
+    <link rel="stylesheet" href="/static/css/dashboard_paciente.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/logout" style="float: right; text-decoration: none;">Sair</a>
+        
+        % if paciente:
+            <h1>Olá, {{paciente['nome']}}!</h1>
+            <p>Este é o seu painel de controle.</p>
+        % end
+
+        <hr style="clear: both;">
+
+        % if medico:
+            <a href="/chat/{{medico['crm']}}" class="edit-btn" style="width: auto; margin-top: 1em;">
+                Iniciar Chat
+                % if nao_lidas > 0:
+                    <span class="notification-badge">{{nao_lidas}}</span>
+                % end
+            </a>
+        % end
+
+        <div class="info-section">
+            <h2>Meu Médico</h2>
+            % if medico:
+                <div class="patient-info">
+                    <p><strong>Nome:</strong> Dr(a). {{medico['nome']}} {{medico['sobrenome']}}</p>
+                    <p><strong>Especialidade:</strong> {{medico['especialidade']}}</p>
+                    <p><strong>Email:</strong> {{medico['email']}}</p>
+                </div>
+            % else:
+                <p>Você ainda não tem um médico a acompanhar o seu caso.</p>
+            % end
+        </div>
+
+        <div class="info-section">
+            <h2>Minhas Consultas Agendadas</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Notas do Médico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        % for consulta in consultas:
+                        <tr>
+                            <td>{{consulta.get('data_consulta')}}</td>
+                            <td>{{consulta.get('hora_consulta')}}</td>
+                            <td>{{consulta.get('notas', 'Sem notas.')}}</td>
+                        </tr>
+                        % end
+                        % if not consultas:
+                        <tr>
+                            <td colspan="3">Nenhuma consulta agendada.</td>
+                        </tr>
+                        % end
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="info-section">
+            <h2>Minhas Prescrições</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Medicamento</th>
+                            <th>Instruções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        % for presc in prescricoes:
+                        <tr>
+                            <td>{{presc.get('data', 'N/A')}}</td>
+                            <td>{{presc.get('medicamento')}}</td>
+                            <td>{{presc.get('instrucoes')}}</td>
+                        </tr>
+                        % end
+                        % if not prescricoes:
+                        <tr>
+                            <td colspan="3">Nenhuma prescrição encontrada.</td>
+                        </tr>
+                        % end
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/dashboard_paciente.js"></script>
+</body>
+</html>

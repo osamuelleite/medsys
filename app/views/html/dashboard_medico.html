@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Médico</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/dashboard_admin.css">
+    <link rel="stylesheet" href="/static/css/dashboard_medico.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/logout" style="float: right; text-decoration: none;">Sair</a>
+        <h1>Dashboard do Médico</h1>
+        <p>Bem-vindo! Aqui pode gerir os seus pacientes.</p>
+
+        <hr style="clear: both;">
+
+        <form action="/dashboard_medico" method="get" class="search-filters">
+            <input type="text" name="pesquisa" placeholder="Pesquisar por nome ou CPF..." value="{{termo_pesquisa_atual}}">
+            <select name="ordem">
+                <option value="">Ordenar por...</option>
+                <option value="nome_asc" {{'selected' if ordem_atual == 'nome_asc' else ''}}>Nome (A-Z)</option>
+                <option value="cpf_asc" {{'selected' if ordem_atual == 'cpf_asc' else ''}}>CPF (Crescente)</option>
+            </select>
+            <button type="submit">Aplicar</button>
+        </form>
+
+        <h2>Lista de Pacientes</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>CPF</th>
+                        <th>Médico Responsável</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    % for paciente in pacientes:
+                    <tr>
+                        <td>{{paciente['nome']}}</td>
+                        <td>{{paciente['sobrenome']}}</td>
+                        <td>{{paciente['cpf']}}</td>
+                        <td>{{paciente.get('nome_medico_responsavel', 'Nenhum')}}</td>
+                        <td class="actions">
+                            % if id_medico_logado == paciente.get('medico_responsavel'):
+                                <a href="/chat/{{paciente['cpf']}}" class="edit-btn">
+                                    Chat
+                                    % if paciente.get('nao_lidas', 0) > 0:
+                                        <span class="notification-badge">{{paciente['nao_lidas']}}</span>
+                                    % end
+                                </a>
+                            % else:
+                                <a href="/medico/acompanhar/{{paciente['cpf']}}" class="edit-btn">Acompanhar</a>
+                            % end
+                            <a href="/medico/prontuario/{{paciente['cpf']}}" class="view-btn">Ver Prontuário</a>
+                        </td>
+                    </tr>
+                    % end
+                    % if not pacientes:
+                    <tr>
+                        <td colspan="5">Nenhum paciente cadastrado no sistema.</td>
+                    </tr>
+                    % end
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Paciente</title>
+    <link rel="stylesheet" href="/static/css/dashboard_admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Paciente</h1>
+        
+        <form action="/admin/atualizar_paciente" method="post">
+            
+            <input type="hidden" name="cpf_original" value="{{paciente['cpf']}}">
+
+            <div class="form-group">
+                <label>Nome:</label>
+                <input type="text" name="nome" value="{{paciente['nome']}}" required>
+            </div>
+            <div class="form-group">
+                <label>Sobrenome:</label>
+                <input type="text" name="sobrenome" value="{{paciente['sobrenome']}}" required>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" value="{{paciente['email']}}" required>
+            </div>
+            <div class="form-group">
+                <label>CPF (não pode ser alterado):</label>
+                <input type="text" name="cpf" value="{{paciente['cpf']}}" readonly style="background-color: #e9ecef;">
+            </div>
+            
+            <button type="submit">Atualizar Informações</button>
+            <a href="/dashboard_admin" style="display: block; text-align: center; margin-top: 1em;">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
